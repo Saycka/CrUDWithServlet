@@ -1,4 +1,4 @@
-package controller;
+package com.manyatkin.crudwithservlets.controller;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

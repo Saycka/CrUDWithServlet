@@ -1,6 +1,7 @@
-package controller;
+package com.manyatkin.crudwithservlets.controller;
 
-import model.MyDataBase;
+import com.manyatkin.crudwithservlets.model.Item;
+import com.manyatkin.crudwithservlets.model.MyDataBase;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,29 +11,39 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
-public class UpdateServlet extends HttpServlet {
+public class AddServlet extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/update.jsp");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/add.jsp");
         requestDispatcher.forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String sId = req.getParameter("id");
         String vendorCode = req.getParameter("vendorCode");
-        String name= req.getParameter("name");
+        String name = req.getParameter("name");
         String sCost = req.getParameter("cost");
 
-        if (!sId.equals("") && !sCost.equals("")) {
+        int cost = 0;
+        if (!sCost.equals("")) {
+            cost = Integer.parseInt(sCost);
+        }
+
+        if (!vendorCode.equals("") && !name.equals("")) {
             MyDataBase myDataBase = MyDataBase.getInstance();
+            Item item = new Item(vendorCode, name, cost);
+
             try {
-                myDataBase.update(Integer.parseInt(sId),vendorCode, name, Integer.parseInt(sCost));
+                myDataBase.add(item);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+
+            req.setAttribute("item", item.toString());
         }
 
         doGet(req, resp);
     }
+
 }

@@ -1,6 +1,6 @@
-package controller;
+package com.manyatkin.crudwithservlets.controller;
 
-import model.MyDataBase;
+import com.manyatkin.crudwithservlets.model.MyDataBase;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,23 +10,25 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
-public class DeleteServlet extends HttpServlet {
-
+public class UpdateServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/delete.jsp");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/update.jsp");
         requestDispatcher.forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String sId = req.getParameter("id");
+        String vendorCode = req.getParameter("vendorCode");
+        String name= req.getParameter("name");
+        String sCost = req.getParameter("cost");
 
-        if (!sId.equals("")) {
-            int id = Integer.parseInt(sId);
+        if (!sId.equals("") && !sCost.equals("")) {
             MyDataBase myDataBase = MyDataBase.getInstance();
+
             try {
-                myDataBase.delete(id);
+                myDataBase.update(Integer.parseInt(sId),vendorCode, name, Integer.parseInt(sCost));
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -34,4 +36,5 @@ public class DeleteServlet extends HttpServlet {
 
         doGet(req, resp);
     }
+
 }

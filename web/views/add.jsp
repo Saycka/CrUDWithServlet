@@ -11,9 +11,7 @@
     <title>CrUd App</title>
 </head>
 <body>
-
 <h1>Add user</h1>
-
 <form method="post">
     <label>Vendor code:
         <input type="text" name="vendorCode"><br/>

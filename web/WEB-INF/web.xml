@@ -7,7 +7,7 @@
     <!-- getItemsList servlet -->
     <servlet>
         <servlet-name>add</servlet-name>
-        <servlet-class>controller.AddServlet</servlet-class>
+        <servlet-class>com.manyatkin.crudwithservlets.controller.AddServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -17,7 +17,7 @@
 
     <servlet>
         <servlet-name>list</servlet-name>
-        <servlet-class>controller.ListServlet</servlet-class>
+        <servlet-class>com.manyatkin.crudwithservlets.controller.ListServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -27,7 +27,7 @@
 
     <servlet>
         <servlet-name>update</servlet-name>
-        <servlet-class>controller.UpdateServlet</servlet-class>
+        <servlet-class>com.manyatkin.crudwithservlets.controller.UpdateServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -37,7 +37,7 @@
 
    <servlet>
        <servlet-name>delete</servlet-name>
-       <servlet-class>controller.DeleteServlet</servlet-class>
+       <servlet-class>com.manyatkin.crudwithservlets.controller.DeleteServlet</servlet-class>
    </servlet>
 
     <servlet-mapping>
